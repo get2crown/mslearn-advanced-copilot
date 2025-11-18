@@ -3,6 +3,7 @@ from os.path import dirname, abspath, join
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from typing import List
 
 
 current_dir = dirname(abspath(__file__))
@@ -30,6 +31,9 @@ def root():
 def countries():
     return list(data.keys())
 
+@app.get('/countries/{country}')
+def cities(country: str):
+        return list(data[country].keys())
 
 @app.get('/countries/{country}/{city}/{month}')
 def monthly_average(country: str, city: str, month: str):
