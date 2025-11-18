@@ -77,3 +77,44 @@ Privacy information can be found at https://privacy.microsoft.com/en-us/
 
 Microsoft and any contributors reserve all other rights, whether under their respective copyrights, patents,
 or trademarks, whether by implication, estoppel or otherwise.
+
+## Quick start — run the project locally
+
+Prerequisites:
+- Python 3.8+ installed.
+- Git (optional) to clone the repo.
+
+1. Create and activate a virtual environment:
+    python -m venv .venv
+    source .venv/bin/activate    # macOS / Linux
+    .venv\Scripts\activate       # Windows (PowerShell)
+
+2. Install dependencies:
+    pip install -r requirements.txt
+
+3. Run the API:
+    uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+4. Open the API docs in your browser:
+    http://127.0.0.1:8000/docs
+    The OpenAPI JSON is also generated at
+    [.well-known/openapi.json](.well-known/openapi.json).
+
+5. Run the test suite:
+    pytest -q
+
+Notes:
+- The app entry is defined in [`main.app`](main.py).
+- Historical data is loaded from [weather.json](weather.json).
+- A development container is provided; see
+  [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json)
+  and [devcontainer.json](devcontainer.json). The included
+  Dockerfile installs the project's requirements.
+
+Contributing
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution
+  guidelines.
+
+License
+- Code: [LICENSE-CODE](LICENSE-CODE)
+- Content: [LICENSE](LICENSE)
